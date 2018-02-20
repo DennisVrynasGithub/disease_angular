@@ -1,0 +1,46 @@
+<!-- Registration Form -->
+<form [formGroup]="form" (submit)="onSymptomSubmit()">
+
+  <div class="form-group">
+    <label for="symptom">Σύμπτωμα</label>
+    <input type="text" name="symptom" class="form-control" autocomplete="off" placeholder="*symptom"
+           formControlName="symptom"/>
+  </div>
+
+  <input type="submit" class="btn btn-primary" value="Πιθανές αρρώστειες"/>
+
+  <div class="sYMPTOM">
+    <li *ngFor="let user of sYMPTOM">
+      <label id="username_2"> {{user.name}} </label>
+      <label id="fact_2"> {{user.fact}} </label>
+      <label id="factid_2"> {{user.factid}} </label>
+      <label id="description_2"> {{user.description}} </label>
+    </li>
+  </div>
+</form>
+
+<form [formGroup]="form" (submit)="onTwoSymptomSubmit()">
+
+  <div class="form-group">
+    <label for="symptom">Σύμπτωμα 1o</label>
+    <input type="text" name="symptom" class="form-control" autocomplete="off" placeholder="*symptom"
+           formControlName="symptom"/>
+  </div>
+
+  <div class="form-group">
+    <label for="symptom1">Σύμπτωμα 2o</label>
+    <input type="text" name="symptom1" class="form-control" autocomplete="off" placeholder="*symptom"
+           formControlName="symptom1"/>
+  </div>
+
+  <input type="submit" class="btn btn-primary" value="Βρες τις ασθένειες"/>
+
+  <div class="sYMPTOM">
+    <li *ngFor="let user of sYMPTOMS">
+      <label id="username_22"> {{user.name}} </label>
+      <label id="fact_22"> {{user.fact}} </label>
+      <label id="factid_22"> {{user.factid}} </label>
+      <label id="description_22"> {{user.description}} </label>
+    </li>
+  </div>
+</form>

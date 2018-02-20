@@ -1,0 +1,31 @@
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.sYMPTOM{
+  width: 100%;
+  height: 600px;
+  overflow-y: scroll;
+}
+
+#username_2,#username_22{
+  color: red;
+}
+
+#factid_2,#factid_22{
+  color: rebeccapurple;
+}
+
+#fact_2,#fact_22{
+  color: rebeccapurple;
+}
+
+#description_2,#description_22{
+  color: blue;
+}

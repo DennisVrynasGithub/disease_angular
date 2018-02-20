@@ -1,0 +1,79 @@
+/* The container */
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 13px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.container input {
+  position: absolute;
+  opacity: 0;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 15px;
+  width: 15px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+
+#first_quest{
+  float: left;
+  margin-right: 70px;
+}
+
+#first_quest1{
+  float: left;
+  margin-right: 70px;
+}
+
+#first_quest2{
+  float: left;
+  margin-right: 70px;
+}
+
+#first_quest3{
+  float: left;
+  margin-right: 70px;
+}
+
+#first_quest4{
+  float: left;
+  margin-right: 70px;
+}
+
+
+.lowres{
+  color: dodgerblue;
+}
+
+.medres{
+  color: chartreuse;
+}
+
+.hires{
+  color: darkred;
+}

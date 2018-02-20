@@ -1,0 +1,86 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<!-- Label Profile -->
+<label>User's <span id="span_text" *ngFor="let users of uSER">{{users.user_name}}</span> Profile</label>
+
+<!-- Custom Success/Error Message -->
+<div class="row show-hide-message">
+  <div [ngClass]="messageClass">
+    {{ message }}
+  </div>
+</div>
+<!-- Give email and get data -->
+<form [formGroup]="form" (submit)="onProfileGet()">
+  <!-- Email Input -->
+  <div class="form-group">
+    <label for="user_email">Email</label>
+    <input type="text" name="user_email" class="form-control" autocomplete="on" placeholder="*email"
+           formControlName="user_email"/>
+  </div>
+  <!-- Submit Input -->
+  <input type="submit" class="btn btn-primary" value="Submit"/>
+  <!-- Output of data -->
+  <div class="uSER">
+    <li *ngFor="let users of uSER">
+      <h2 id="user_name">{{users.user_name}}</h2>
+      <h2 id="user_password">{{users.user_password}}</h2>
+      <h2 id="user_age">{{users.user_age}}</h2>
+      <h2 id="user_email">{{users.user_email}}</h2>
+      <h2 id="user_country">{{users.user_country}}</h2>
+    </li>
+  </div>
+</form>
+
+
+<!-- Show inputs to change data -->
+<button (click)="changeShow()"
+        value="Submit"
+        class="btn btn-danger navbar-btn">Button
+</button>
+
+
+<!-- Email Input -->
+<p>{{show}}</p>
+
+
+
+<!-- Change user name -->
+<form *ngIf="viewing()" [formGroup]="form" (submit)="onPutName()">
+  <!-- Email Input -->
+  <div class="form-group">
+    <label for="user_name">Name</label>
+    <input type="text" name="user_name" class="form-control" autocomplete="on" placeholder="*user_name"
+           formControlName="user_name"/>
+  </div>
+  <!-- Submit Input -->
+  <input type="submit" class="btn btn-primary" value="New Name"/>
+</form>
+
+
+<!-- Change user password -->
+<form *ngIf="viewing()" [formGroup]="form" (submit)="onPutPassword()">
+  <!-- Email Input -->
+  <div class="form-group">
+    <label for="user_password">Password</label>
+    <input type="text" name="user_password" class="form-control" autocomplete="on" placeholder="*user_password"
+           formControlName="user_password"/>
+  </div>
+  <!-- Submit Input -->
+  <input type="submit" class="btn btn-primary" value="New Password"/>
+</form>
+
+
+<!-- Change user age -->
+<form *ngIf="viewing()" [formGroup]="form" (submit)="onPutAge()">
+  <!-- Email Input -->
+  <div class="form-group">
+    <label for="user_age">Age</label>
+    <input type="text" name="user_age" class="form-control" autocomplete="on" placeholder="*user_age"
+           formControlName="user_age"/>
+  </div>
+  <!-- Submit Input -->
+  <input type="submit" class="btn btn-primary" value="New Age"/>
+</form>

@@ -1,0 +1,40 @@
+.dISEASES{
+  width: 70%;
+  height: 100px;
+  overflow-y: scroll;
+}
+
+.dISEASE_auto{
+  width: 100%;
+  height: 100px;
+  overflow-y: scroll;
+}
+
+#disease_auto:hover{
+  background: darkgrey;
+}
+
+.dISEASEletter{
+  width: 100%;
+  height: 300px;
+  overflow-y: scroll;
+}
+
+#username_1{
+  color: indigo;
+}
+
+#factid_1{
+  color: red;
+}
+
+#fact_1{
+  color: red;
+}
+
+#description_1{
+  color: blue;
+}
+#descripition_disease{
+  color: blue;
+}
