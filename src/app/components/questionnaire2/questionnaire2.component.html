@@ -27,7 +27,7 @@
     <div class="next">
       <button (click)="changeShow()"
               value="Submit"
-              class="btn btn-danger navbar-btn">next
+              class="btn btn-danger navbar-btn">Επόμενο
       </button>
     </div>
   </div>
@@ -56,7 +56,7 @@
     <div *ngIf="viewing()" class="next">
       <button (click)="changeShow2()"
               value="Submit"
-              class="btn btn-danger navbar-btn">next
+              class="btn btn-danger navbar-btn">Επόμενο
       </button>
     </div>
   </div>
@@ -85,7 +85,7 @@
     <div *ngIf="viewing2()" class="next">
       <button (click)="changeShow3()"
               value="Submit"
-              class="btn btn-danger navbar-btn">next
+              class="btn btn-danger navbar-btn">Επόμενο
       </button>
     </div>
   </div>
@@ -114,7 +114,7 @@
     <div *ngIf="viewing3()" class="next">
       <button (click)="changeShow4()"
               value="Submit"
-              class="btn btn-danger navbar-btn">next
+              class="btn btn-danger navbar-btn">Επόμενο
       </button>
     </div>
   </div>
@@ -141,26 +141,26 @@
 
 
       <div *ngIf="viewing4()" class="next">
-        <input type="submit" class="btn btn-primary" value="send"/>
+        <input type="submit" class="btn btn-primary" value="Αποστολή"/>
       </div>
     </form>
 
     <div *ngIf="viewresult()">
-      <h3 class="lowres">Your score is {{sum}}</h3>
-      <h3 class="lowres">Effect : Low</h3>
-      <h3 class="lowres"> In any case visit your doctor</h3>
+      <h3 class="lowres">Το σκορ σας είναι {{sum}}</h3>
+      <h3 class="lowres">Επίδραση : Χαμηλή</h3>
+      <h3 class="lowres">Σε κάθε περίπτωση επισκεφθείτε το γιατρό σας</h3>
     </div>
 
     <div *ngIf="viewresult2()">
-      <h3 class="medres">Your score is {{sum}}</h3>
-      <h3 class="medres">Effect : Medium</h3>
-      <h3 class="medres"> In any case visit your doctor</h3>
+      <h3 class="medres">Το σκορ σας είναι {{sum}}</h3>
+      <h3 class="medres">Επίδραση : Μέτρια</h3>
+      <h3 class="medres">Σε κάθε περίπτωση επισκεφθείτε το γιατρό σας</h3>
     </div>
 
     <div *ngIf="viewresult3()">
-      <h3 class="hires">Your score is {{sum}}</h3>
-      <h3 class="hires">Effect : High</h3>
-      <h3 class="hires"> In any case visit your doctor</h3>
+      <h3 class="hires">Το σκορ σας είναι {{sum}}</h3>
+      <h3 class="hires">Επίδραση : Υψηλή</h3>
+      <h3 class="hires">Σε κάθε περίπτωση επισκεφθείτε το γιατρό σας</h3>
     </div>
   </div>
 </nav>
