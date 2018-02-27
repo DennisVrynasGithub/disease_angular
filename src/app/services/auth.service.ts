@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class AuthService {
 
-  domain = "http://localhost:8010"; // Development Domain - Not Needed in Production
+  domain = "http://83.212.101.67:8010"; // Development Domain - Not Needed in Production
   authToken;
   user;
   user_email;

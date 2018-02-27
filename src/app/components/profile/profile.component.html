@@ -4,7 +4,7 @@
 <br>
 <br>
 <!-- Label Profile -->
-<label>User's <span id="span_text" *ngFor="let users of uSER">{{users.user_name}}</span> Profile</label>
+<label>User's <span id="span_text" *ngFor="let users of uSER">{{users.user_name}}</span> Προφίλ</label>
 
 <!-- Custom Success/Error Message -->
 <div class="row show-hide-message">
@@ -21,7 +21,7 @@
            formControlName="user_email"/>
   </div>
   <!-- Submit Input -->
-  <input type="submit" class="btn btn-primary" value="Submit"/>
+  <input type="submit" class="btn btn-primary" value="Εμφάνισε"/>
   <!-- Output of data -->
   <div class="uSER">
     <li *ngFor="let users of uSER">
@@ -34,29 +34,25 @@
   </div>
 </form>
 
-
 <!-- Show inputs to change data -->
 <button (click)="changeShow()"
         value="Submit"
-        class="btn btn-danger navbar-btn">Button
+        class="btn btn-danger navbar-btn">Εμφάνισε/Απόκρυψε
 </button>
 
-
 <!-- Email Input -->
-<p>{{show}}</p>
-
-
+<!--<p>{{show}}</p>-->
 
 <!-- Change user name -->
 <form *ngIf="viewing()" [formGroup]="form" (submit)="onPutName()">
   <!-- Email Input -->
   <div class="form-group">
-    <label for="user_name">Name</label>
+    <label for="user_name">Όνομα χρήστη</label>
     <input type="text" name="user_name" class="form-control" autocomplete="on" placeholder="*user_name"
            formControlName="user_name"/>
   </div>
   <!-- Submit Input -->
-  <input type="submit" class="btn btn-primary" value="New Name"/>
+  <input type="submit" class="btn btn-primary" value="Νέο όνομα"/>
 </form>
 
 
@@ -64,12 +60,12 @@
 <form *ngIf="viewing()" [formGroup]="form" (submit)="onPutPassword()">
   <!-- Email Input -->
   <div class="form-group">
-    <label for="user_password">Password</label>
+    <label for="user_password">Κωδικός</label>
     <input type="text" name="user_password" class="form-control" autocomplete="on" placeholder="*user_password"
            formControlName="user_password"/>
   </div>
   <!-- Submit Input -->
-  <input type="submit" class="btn btn-primary" value="New Password"/>
+  <input type="submit" class="btn btn-primary" value="Νέος κωδικός"/>
 </form>
 
 
@@ -77,10 +73,10 @@
 <form *ngIf="viewing()" [formGroup]="form" (submit)="onPutAge()">
   <!-- Email Input -->
   <div class="form-group">
-    <label for="user_age">Age</label>
+    <label for="user_age">Ηλικία</label>
     <input type="text" name="user_age" class="form-control" autocomplete="on" placeholder="*user_age"
            formControlName="user_age"/>
   </div>
   <!-- Submit Input -->
-  <input type="submit" class="btn btn-primary" value="New Age"/>
+  <input type="submit" class="btn btn-primary" value="Νέα ηλικία"/>
 </form>

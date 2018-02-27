@@ -36,8 +36,8 @@ export class LoginComponent implements OnInit {
       // Username Input
       user_password: ['', Validators.compose([
         Validators.required, // Field is required
-        Validators.minLength(7), // Minimum length is 3 characters
-        Validators.maxLength(25) // Maximum length is 15 characters
+        Validators.minLength(5), // Minimum length is 3 characters
+        Validators.maxLength(35) // Maximum length is 15 characters
       ])]
     });
   }

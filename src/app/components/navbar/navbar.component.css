@@ -2,6 +2,7 @@
   position: fixed;
   left: 0px;
   right: 0px;
+  height: 7%;
 }
 .list-group-item {
   background-color: #222222;
