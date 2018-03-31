@@ -1,0 +1,21 @@
+   	<div class="image_left">
+	  <img src="/assets/bla2.PNG" alt="Generic placeholder image" width="130" height="130">
+	</div>
+	
+	<div *ngIf="viewresult()">
+      <h3 class="lowres">Your score is {{sum}}  <span><img src="/assets/33.PNG" alt="Generic placeholder image" width="30" height="30"></span></h3>
+      <h3 class="lowres">Effect : Low  <span><img src="/assets/33.PNG" alt="Generic placeholder image" width="30" height="30"></span></h3>
+      <h3 class="lowres">In any case visit your doctor</h3>
+    </div>
+
+    <div *ngIf="viewresult2()">
+      <h3 class="medres">Your score is {{sum}} <span><img src="/assets/32.PNG" alt="Generic placeholder image" width="30" height="30"></span></h3>
+      <h3 class="medres">Effect : Medium <span><img src="/assets/32.PNG" alt="Generic placeholder image" width="30" height="30"></span></h3>
+      <h3 class="medres">In any case visit your doctor</h3>
+    </div>
+
+    <div *ngIf="viewresult3()">
+      <h3 class="hires">Your score is {{sum}} <span><img src="/assets/31.PNG" alt="Generic placeholder image" width="30" height="30"></span></h3>
+      <h3 class="hires">Effect : High <span><img src="/assets/31.PNG" alt="Generic placeholder image" width="30" height="30"></span></h3>
+      <h3 class="hires">In any case visit your doctor</h3>
+    </div>

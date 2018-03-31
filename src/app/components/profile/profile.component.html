@@ -1,82 +1,77 @@
-<br>
-<br>
-<br>
-<br>
-<br>
-<!-- Label Profile -->
-<label>User's <span id="span_text" *ngFor="let users of uSER">{{users.user_name}}</span> Προφίλ</label>
-
+<h1 class="page-header">Profile page</h1>
 <!-- Custom Success/Error Message -->
 <div class="row show-hide-message">
   <div [ngClass]="messageClass">
     {{ message }}
   </div>
 </div>
-<!-- Give email and get data -->
-<form [formGroup]="form" (submit)="onProfileGet()">
-  <!-- Email Input -->
-  <div class="form-group">
-    <label for="user_email">Email</label>
-    <input type="text" name="user_email" class="form-control" autocomplete="on" placeholder="*email"
-           formControlName="user_email"/>
-  </div>
-  <!-- Submit Input -->
-  <input type="submit" class="btn btn-primary" value="Εμφάνισε"/>
-  <!-- Output of data -->
+
+<!-- Label Profile -->
+<label>User <span id="span_text" *ngFor="let users of uSER">{{users.user_name}} 's</span> profile</label>
+
+<br>
+<br>
+<!-- Give email and get data
+<form [formGroup]="form">   -->
+  <!-- Output of data 
   <div class="uSER">
     <li *ngFor="let users of uSER">
-      <h2 id="user_name">{{users.user_name}}</h2>
-      <h2 id="user_password">{{users.user_password}}</h2>
-      <h2 id="user_age">{{users.user_age}}</h2>
-      <h2 id="user_email">{{users.user_email}}</h2>
-      <h2 id="user_country">{{users.user_country}}</h2>
+      <h2 id="user_name">Your user name is :<span class='result_show'> {{users.user_name}} </span></h2>
+      <h2 id="user_age">Your age is :<span class='result_show'> {{users.user_age}} </span></h2>
+      <h2 id="user_email">Your email is :<span class='result_show'> {{users.user_email}} </span></h2>
+      <h2 id="user_country">You live in :<span class='result_show'> {{users.user_country}} </span></h2>
     </li>
   </div>
-</form>
+</form> -->
 
-<!-- Show inputs to change data -->
+<!-- Show inputs to change data 
 <button (click)="changeShow()"
         value="Submit"
-        class="btn btn-danger navbar-btn">Εμφάνισε/Απόκρυψε
-</button>
-
-<!-- Email Input -->
-<!--<p>{{show}}</p>-->
+        class="btn btn-danger navbar-btn"><i class="fa fa-lock"></i> Show/Hide
+</button> -->
 
 <!-- Change user name -->
-<form *ngIf="viewing()" [formGroup]="form" (submit)="onPutName()">
+<form  [formGroup]="form">
   <!-- Email Input -->
   <div class="form-group">
-    <label for="user_name">Όνομα χρήστη</label>
-    <input type="text" name="user_name" class="form-control" autocomplete="on" placeholder="*user_name"
-           formControlName="user_name"/>
+    <label for="user_name">User name</label>
+	<br>
+	<li *ngFor="let users of uSER" class="uSER">    
+    <input type="text" name="user_name" class="form-control" autocomplete="on" placeholder="*{{users.user_name}}"
+           formControlName="user_name"/><span><button id="button_inside1" (click)="onPutName()"
+              value="Submit"
+              class="btn btn-primary"><i class="fa fa-check-circle"></i> Change user name
+      </button></span>
+	  </li>
   </div>
-  <!-- Submit Input -->
-  <input type="submit" class="btn btn-primary" value="Νέο όνομα"/>
 </form>
-
 
 <!-- Change user password -->
-<form *ngIf="viewing()" [formGroup]="form" (submit)="onPutPassword()">
+<form  [formGroup]="form">
   <!-- Email Input -->
   <div class="form-group">
-    <label for="user_password">Κωδικός</label>
-    <input type="text" name="user_password" class="form-control" autocomplete="on" placeholder="*user_password"
-           formControlName="user_password"/>
+    <label for="user_password">Password</label>
+	<br>  
+    <input type="password" name="user_password" class="form-control" autocomplete="on" placeholder="*user_password"
+           formControlName="user_password"/><span><button id="button_inside2" (click)="onPutPassword()"
+              value="Submit"
+              class="btn btn-primary"><i class="fa fa-check-circle"></i> Change password
+      </button></span>
   </div>
-  <!-- Submit Input -->
-  <input type="submit" class="btn btn-primary" value="Νέος κωδικός"/>
 </form>
 
-
 <!-- Change user age -->
-<form *ngIf="viewing()" [formGroup]="form" (submit)="onPutAge()">
+<form  [formGroup]="form">
   <!-- Email Input -->
   <div class="form-group">
-    <label for="user_age">Ηλικία</label>
-    <input type="text" name="user_age" class="form-control" autocomplete="on" placeholder="*user_age"
-           formControlName="user_age"/>
+    <label for="user_age">Age </label>
+	<br>
+	<li *ngFor="let users of uSER" class="uSER">
+    <input type="text" name="user_age" class="form-control" autocomplete="on" placeholder="*{{users.user_age}}"
+           formControlName="user_age"/><span><button id="button_inside3" (click)="onPutAge()"
+              value="Submit"
+              class="btn btn-primary"><i class="fa fa-check-circle"></i> Change age
+      </button></span>
+	  </li>
   </div>
-  <!-- Submit Input -->
-  <input type="submit" class="btn btn-primary" value="Νέα ηλικία"/>
 </form>

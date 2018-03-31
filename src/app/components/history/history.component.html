@@ -1,0 +1,25 @@
+<div class="message" *ngIf="view_alert_div()">
+   <p>Do you really want to delete it?</p>
+  <p id="two_buttons">
+   <span id="first_button">
+      <button (click)="delete_disease()" value="Submit"
+              class="btn btn-primary"><i class="fa fa-check-circle" style="font-size:22px"></i>
+      </button>
+	</span>      
+	<span id="second_button">
+	    <button (click)="close_alert()" value="Submit"
+              class="btn btn-danger"><i class="fa fa-close" style="font-size:22px"></i>
+        </button>
+	</span>
+   </p>
+   <hr>
+</div>
+
+<div class="history_disease">
+      <li id="history_li" *ngFor="let user of list_history">
+        <label id="history_li1"> {{user.name}} </label>
+        <p id="history_li2"> {{user.date}} <span><button id="delete_button" (click)="change_value(user.id)" value="Submit"
+              class="btn btn-danger"><i class="material-icons" style="font-size:18px">delete_forever</i>
+      </button></span></p>
+      </li>
+</div>

@@ -17,7 +17,7 @@ export class Questionnaire4Component implements OnInit {
   selectedDay4: string = '';
   selectedDay5: string = '';
   selectedDay6: string = '';
-  days: any = ['Ιδανική ','Οριακά αυξημένη','Ήπια υπέρταση','Μετρίου υπέρταση','Κακοήθης υπέρταση'];
+  days: any = ['Ideal ','Boundary increased','Mild hypertension','Moderate hypertension','Malignant hypertension'];
   days2: any = ['10-20','20-30','30-40','40-50','50-60','60-70','70-80','80-90'];
   days3: any = ['1','2','3','4','5','6','7','8','9','10'];
   days4: any = ['1','2','3','4','5','6','7','8','9','10'];
@@ -25,11 +25,13 @@ export class Questionnaire4Component implements OnInit {
   days6: any = ['1','2','3','4','5','6','7','8','9','10'];
   messageClass;
   message;
-  shhow = false;
+  shhow1 = true;
   shhow2 = false;
   shhow3 = false;
   shhow4 = false;
   shhow5 = false;
+  shhow6 = false;
+  shhow7 = false;
   da;
 id;
   showresult=false;
@@ -51,6 +53,9 @@ id;
         Validators.minLength(2), // Minimum length is 3 characters
         Validators.maxLength(4) // Maximum length is 15 characters
       ])],
+	  gender: ['', Validators.compose([
+        Validators.required // Field is required
+      ])],
       caused_other: ['', Validators.compose([
         Validators.required, // Field is required
         Validators.minLength(3) // Minimum length is 3 characters
@@ -66,29 +71,41 @@ id;
       time: ['', Validators.compose([
         Validators.required, // Field is required
         Validators.minLength(3) // Minimum length is 3 characters
+      ])],
+      date: ['', Validators.compose([
+        Validators.required
       ])]
     }); // Add custom validator to form for matching passwords
   }
 
 
-  changeShow() {
-    this.shhow = !this.shhow;
+  changeShow1() {
+    this.shhow1 = !this.shhow1;
+    this.shhow2 = !this.shhow2;
   }
   changeShow2() {
     this.shhow2 = !this.shhow2;
+    this.shhow3 = !this.shhow3;
   }
   changeShow3() {
     this.shhow3 = !this.shhow3;
+    this.shhow4 = !this.shhow4;
   }
   changeShow4() {
     this.shhow4 = !this.shhow4;
+    this.shhow5 = !this.shhow5;
   }
   changeShow5() {
     this.shhow5 = !this.shhow5;
+    this.shhow7 = !this.shhow7;
+  }
+  changeShow6() {
+    this.shhow5 = !this.shhow5;
+    this.shhow7 = !this.shhow7;
   }
 
-  viewing() {
-    return this.shhow;
+  viewing1() {
+    return this.shhow1;
   }
 
   viewing2() {
@@ -105,6 +122,10 @@ id;
 
   viewing5() {
     return this.shhow5;
+  }
+
+  viewing7() {
+    return this.shhow7;
   }
 
 
@@ -143,21 +164,20 @@ id;
     //update the ui
     this.selectedDay6 = event.target.value;
   }
-
-  viewresult(){
-    return this.showresult;
-  }
-
-  viewresult2(){
-    return this.showresult2;
-  }
-
-  viewresult3(){
-    return this.showresult3;
-  }
-
+  
+    last_result(sum){
+		this.authService.saveSum(sum);
+		this.router.navigate(['/lastResultComponent']);
+	}
 
   onQ4(){
+	   var a = parseInt(this.selectedDay6);
+    var c = parseInt(this.selectedDay3);
+    var d = parseInt(this.selectedDay4);
+    var e = parseInt(this.selectedDay5);
+
+    this.sum = a+c+d+e;
+	
     // Create user object form user's inputs
     const user = {
       gender: this.selectedDay, // gender input field
@@ -166,23 +186,12 @@ id;
       treatment: this.selectedDay4, // treatment input field
       time: this.selectedDay5, // time input field
       illnes: this.selectedDay6, // illnes input field
+      date: this.form.get('date').value, // illnes input field
+      sum: this.sum, // illnes input field
       id_2: this.id // gendre input field
     };
 
-    var a = parseInt(this.selectedDay6);
-    var c = parseInt(this.selectedDay3);
-    var d = parseInt(this.selectedDay4);
-    var e = parseInt(this.selectedDay5);
-
-    this.sum = a+c+d+e;
-
-    if (this.sum>=0 && this.sum<=15){
-      this.showresult =true;
-    }else if (this.sum>=16 && this.sum<=30){
-      this.showresult2 =true;
-    }else{
-      this.showresult3 =true;
-    }
+   
 
     // Function from authentication service to register user
     this.authService.quest4(user).subscribe(response => {
@@ -195,17 +204,19 @@ id;
         this.messageClass = 'alert alert-success'; // Set a success class
         this.message = response.message; // Set a success message
         // After 2 second timeout, navigate to the login page
-        setTimeout(() => {
-          this.router.navigate(['/dashboard']); // Redirect to login view
-        }, 6000);
+       this.last_result(this.sum);
       }
     });
   }
 
   ngOnInit() {
     this.da = this.authService.sendEmail();
+    
     this.id = this.authService.sendId();
-    console.log(this.da);
+	console.log(this.id);
+	if (this.id == null){
+		this.router.navigate(['/home']);
+	}
   }
 
 }

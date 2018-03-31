@@ -1,4 +1,4 @@
-<h1 class="page-header">Σελίδα εγγραφής</h1>
+<h1 class="page-header">Register page</h1>
 <!-- Custom Success/Error Message -->
 <div class="row show-hide-message">
   <div [ngClass]="messageClass">
@@ -7,11 +7,11 @@
 </div>
 
 <!-- Registration Form -->
-<form [formGroup]="form" (submit)="onRegisterSubmit()">
+<form [formGroup]="form">
 
   <!-- Username Input -->
   <div class="form-group">
-    <label>Όνομα χρήστη</label>
+    <label>User name</label>
     <input type="text"
            name="username"
            class="form-control"
@@ -26,7 +26,7 @@
 
   <!-- Password Input -->
   <div class="form-group">
-    <label>Κωδικός χρήστης</label>
+    <label>User password</label>
     <input type="password"
            name="password"
            class="form-control"
@@ -56,7 +56,7 @@
 
   <!-- Country Input -->
   <div class="form-group">
-    <label>Χώρα διαμονής</label>
+    <label>Country</label>
     <input type="country" name="country" class="form-control" autocomplete="off" placeholder="*country"
            formControlName="country"/>
     <ul class="help-block">
@@ -67,7 +67,7 @@
 
   <!-- Gendre Input -->
   <div class="form-group">
-    <label>Γέννος</label>
+    <label>Gender</label>
     <input type="gendre" name="gendre" class="form-control" autocomplete="off" placeholder="*gendre"
            formControlName="gendre"/>
     <ul class="help-block">
@@ -78,7 +78,7 @@
 
   <!-- Age Input -->
   <div class="form-group">
-    <label>Ηλικία</label>
+    <label>Age</label>
     <input type="age" name="age" class="form-control" autocomplete="off" placeholder="*age"
            formControlName="age"/>
     <ul class="help-block">
@@ -88,7 +88,10 @@
   </div>
 
   <!-- Submit Input -->
-  <input type="submit" class="btn btn-primary" value="Εγγραφή"/>
+  <button (click)="onRegisterSubmit()"
+              value="Submit"
+              class="btn btn-primary"><i class="fa fa-user-plus"></i> Register
+      </button>
 
 </form>
 <!-- Registration Form /-->

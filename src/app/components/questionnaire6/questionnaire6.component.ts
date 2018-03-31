@@ -24,10 +24,12 @@ export class Questionnaire6Component implements OnInit {
   days5: any = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
   messageClass;
   message;
-  shhow = false;
+  shhow1 = true;
   shhow2 = false;
   shhow3 = false;
   shhow4 = false;
+  shhow5 = false;
+  shhow6 = false;
   da;
   id;
   showresult=false;
@@ -60,29 +62,41 @@ export class Questionnaire6Component implements OnInit {
       treatment: ['', Validators.compose([
         Validators.required, // Field is required
         Validators.minLength(3) // Minimum length is 3 characters
+      ])],
+      date: ['', Validators.compose([
+        Validators.required
       ])]
     }); // Add custom validator to form for matching passwords
   }
 
 
-  changeShow() {
-    this.shhow = !this.shhow;
+  changeShow1() {
+    this.shhow1 = !this.shhow1;
+    this.shhow2 = !this.shhow2;
   }
 
   changeShow2() {
     this.shhow2 = !this.shhow2;
+    this.shhow3 = !this.shhow3;
   }
 
   changeShow3() {
     this.shhow3 = !this.shhow3;
+    this.shhow4 = !this.shhow4;
   }
 
   changeShow4() {
     this.shhow4 = !this.shhow4;
+    this.shhow6 = !this.shhow6;
   }
 
-  viewing() {
-    return this.shhow;
+  changeShow5() {
+    this.shhow4 = !this.shhow4;
+    this.shhow6 = !this.shhow6;
+  }
+
+  viewing1() {
+    return this.shhow1;
   }
 
   viewing2() {
@@ -95,6 +109,10 @@ export class Questionnaire6Component implements OnInit {
 
   viewing4() {
     return this.shhow4;
+  }
+
+  viewing6() {
+    return this.shhow6;
   }
 
   //event handler for the radio button's change event
@@ -127,19 +145,20 @@ export class Questionnaire6Component implements OnInit {
     this.selectedDay5 = event.target.value;
   }
 
-  viewresult(){
-    return this.showresult;
-  }
-
-  viewresult2(){
-    return this.showresult2;
-  }
-
-  viewresult3(){
-    return this.showresult3;
-  }
+  last_result(sum){
+		this.authService.saveSum(sum);
+		this.router.navigate(['/lastResultComponent']);
+	}
 
   onQ6() {
+	  var a = parseInt(this.selectedDay);
+    var b = parseInt(this.selectedDay2);
+    var c = parseInt(this.selectedDay3);
+    var d = parseInt(this.selectedDay4);
+    var e = parseInt(this.selectedDay5);
+
+    this.sum = a+b+c+d+e;
+	
     // Create user object form user's inputs
     const user = {
       gender: this.selectedDay, // gender input field
@@ -147,24 +166,10 @@ export class Questionnaire6Component implements OnInit {
       heredity_history: this.selectedDay3, // heredity_history input field
       illnes_heredity: this.selectedDay4, // illnes_heredity input field
       treatment: this.selectedDay5, // treatment input field
+      date: this.form.get('date').value, // treatment input field
+      sum: this.sum, // treatment input field
       id_2: this.id // gendre input field
     };
-
-    var a = parseInt(this.selectedDay);
-    var b = parseInt(this.selectedDay2);
-    var c = parseInt(this.selectedDay3);
-    var d = parseInt(this.selectedDay4);
-    var e = parseInt(this.selectedDay5);
-
-    this.sum = a+b+c+d+e;
-
-    if (this.sum>=0 && this.sum<=20){
-      this.showresult =true;
-    }else if (this.sum>=21 && this.sum<=40){
-      this.showresult2 =true;
-    }else{
-      this.showresult3 =true;
-    }
 
     // Function from authentication service to register user
     this.authService.quest6(user).subscribe(response => {
@@ -177,17 +182,19 @@ export class Questionnaire6Component implements OnInit {
         this.messageClass = 'alert alert-success'; // Set a success class
         this.message = response.message; // Set a success message
         // After 2 second timeout, navigate to the login page
-        setTimeout(() => {
-          this.router.navigate(['/dashboard']); // Redirect to login view
-        }, 6000);
+        this.last_result(this.sum);
       }
     });
   }
 
   ngOnInit() {
     this.da = this.authService.sendEmail();
+    
     this.id = this.authService.sendId();
-    console.log(this.da);
+	console.log(this.id);
+	if (this.id == null){
+		this.router.navigate(['/home']);
+	}
   }
 
 }

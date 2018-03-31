@@ -18,3 +18,19 @@
 
 }
 
+.uSER{
+   list-style: none
+}
+.form-control{
+	width: 50%;
+	float: left;
+	margin-right: 10px;
+	
+}
+.result_show{
+	color: red;
+}
+
+#button_inside1,#button_inside2,#button_inside3{
+	
+}

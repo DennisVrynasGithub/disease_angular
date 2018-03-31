@@ -1,41 +1,43 @@
 <!-- Fixed navbar -->
 <nav class="sidebar">
-
-  <ul class="sidebar-list-right">
-    <input id="toggle_1"
-           class="btn btn-primary"
-           type="submit"
-           value="ax"
-           (click)="openclose()" />
+  <ul id="openclose" class="sidebar-list-right">
+    <li><a *ngIf="authService.loggedIn() && !authService.adminlogin()" [routerLinkActive]="['active']" [routerLinkActive]="['router-link-active']"
+           routerLink="/dashboard" class="list-group-item">
+      <i class="fa fa-dashboard"></i> Dashboard</a></li>
+    <li><a *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActive]="['router-link-active']"
+           routerLink="/home" class="list-group-item">
+      <i class="fa fa-drivers-license-o"></i> Home</a></li>
+    <li><a *ngIf="authService.adminlogin()" [routerLinkActive]="['active']" [routerLinkActive]="['router-link-active']"
+           routerLink="/admin" class="list-group-item">
+      <i class="fa fa-drivers-license-o"></i> Admin</a></li>
+    <li><a *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActive]="['router-link-active']"
+           routerLink="/login" class="list-group-item">
+      <i class="fa fa-group"></i> Login</a></li>
+    <li><a *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActive]="['router-link-active']"
+           routerLink="/register" class="list-group-item">
+      <i class="fa fa-address-book-o"></i> Register</a></li>
+    <li><a *ngIf="authService.loggedIn() && !authService.adminlogin()" [routerLinkActive]="['active']" [routerLinkActive]="['router-link-active']"
+           routerLink="/diseases" class="list-group-item">
+      <i class="fa fa-flask"></i> Disease</a></li>
+    <li><a *ngIf="authService.loggedIn() && !authService.adminlogin()" [routerLinkActive]="['active']" [routerLinkActive]="['router-link-active']"
+           routerLink="/symptoms" class="list-group-item">
+      <i class="fa fa-heartbeat"></i> Symptom</a></li>
+    <li><a *ngIf="authService.loggedIn() && !authService.adminlogin()" [routerLinkActive]="['active']" [routerLinkActive]="['router-link-active']"
+           routerLink="/history" class="list-group-item">
+      <i class="fa fa-drivers-license-o"></i> History</a></li>
+    <li><a *ngIf="authService.loggedIn() && !authService.adminlogin()" [routerLinkActive]="['active']" [routerLinkActive]="['router-link-active']"
+           routerLink="/profile" class="list-group-item">
+      <i class="fa fa-drivers-license-o"></i> Profile</a></li>
+    <li><a *ngIf="authService.loggedIn() && !authService.adminlogin()" [routerLinkActive]="['active']" [routerLinkActive]="['router-link-active']"
+           routerLink="/quests" class="list-group-item">
+      <i class="fa fa-drivers-license-o"></i> Questionnaires</a></li>
   </ul>
-
-      <ul *ngIf="open" id="openclose" class="sidebar-list-right">
-        <a *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActive]="['router-link-active']" routerLink="/dashboard" class="list-group-item">
-          <i class="fa fa-dashboard"></i>     Dashboard</a>
-        <a [routerLinkActive]="['active']" [routerLinkActive]="['router-link-active']" routerLink="/login" class="list-group-item">
-          <i class="fa fa-group"></i>     Σύνδεση/Login</a>
-        <a [routerLinkActive]="['active']" [routerLinkActive]="['router-link-active']" routerLink="/register" class="list-group-item">
-          <i class="fa fa-address-book-o"></i>     Εγγραφή/Register</a>
-        <a *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActive]="['router-link-active']" routerLink="/diseases" class="list-group-item">
-          <i class="fa fa-flask"></i>     Ασθένεια</a>
-        <a *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActive]="['router-link-active']" routerLink="/symptoms" class="list-group-item">
-          <i class="fa fa-heartbeat"></i>     Σύμπτωμα</a>
-        <a *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActive]="['router-link-active']" routerLink="/questionnaire1" class="list-group-item">
-          <i class="fa fa-drivers-license-o"></i>     1ο Ερωτηματολογιο</a>
-        <a *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActive]="['router-link-active']" routerLink="/questionnaire2" class="list-group-item">
-          <i class="fa fa-drivers-license-o"></i>     2ο Ερωτηματολογιο</a>
-        <a *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActive]="['router-link-active']" routerLink="/questionnaire3" class="list-group-item">
-          <i class="fa fa-drivers-license-o"></i>     3ο Ερωτηματολογιο</a>
-        <a *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActive]="['router-link-active']" routerLink="/questionnaire4" class="list-group-item">
-          <i class="fa fa-drivers-license-o"></i>     4ο Ερωτηματολογιο</a>
-        <a *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActive]="['router-link-active']" routerLink="/questionnaire5" class="list-group-item">
-          <i class="fa fa-drivers-license-o"></i>     5ο Ερωτηματολογιο</a>
-        <a *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActive]="['router-link-active']" routerLink="/questionnaire6" class="list-group-item">
-          <i class="fa fa-drivers-license-o"></i>     6ο Ερωτηματολογιο</a>
-        <a *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActive]="['router-link-active']" routerLink="/profile" class="list-group-item">
-          <i class="fa fa-drivers-license-o"></i>     Προφίλ</a>
-        <a [routerLinkActive]="['active']" [routerLinkActive]="['router-link-active']" routerLink="/home" class="list-group-item">
-          <i class="fa fa-drivers-license-o"></i>     Αρχική</a>
-      </ul>
+  
+  <ul *ngIf="authService.loggedIn()" class="sidebar-list-right">
+		   <button id="toggle_1" (click)="openclose()"
+              value="Submit"
+              class="btn btn-primary"><i class="fa fa-minus-circle"></i> Logout
+      </button>
+  </ul>
 </nav>
 

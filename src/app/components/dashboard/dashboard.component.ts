@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../../services/auth.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-dashboard',
@@ -14,9 +15,11 @@ export class DashboardComponent implements OnInit {
   y: Array<any>;
   yid;
   yid2;
+  id;
 
   constructor(private formBuilder: FormBuilder,
-              private authService: AuthService) {
+              private authService: AuthService,
+              private router: Router) {
   }
 
 
@@ -26,8 +29,13 @@ export class DashboardComponent implements OnInit {
 
       this.y = response;
       this.yid = Object.keys(this.y).map(k => this.y[k])
-      this.yid2 = this.yid[0].toString();2
+      this.yid2 = this.yid[0].toString();
       this.authService.takeId(this.yid2);
+	  this.id = this.authService.sendId();
+	this.id = this.authService.sendId();
+	if (this.id == null){
+		this.router.navigate(['/home']);
+	}
     })
   }
 }

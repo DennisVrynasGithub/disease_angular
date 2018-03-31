@@ -13,12 +13,29 @@ import { Questionnaire3Component } from './components/questionnaire3/questionnai
 import { Questionnaire4Component } from './components/questionnaire4/questionnaire4.component';
 import { Questionnaire5Component } from './components/questionnaire5/questionnaire5.component';
 import { Questionnaire6Component } from './components/questionnaire6/questionnaire6.component';
+import { ResultComponent } from './components/result/result.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { LastResultComponent } from './components/last-result/last-result.component';
+import { QuestComponent } from './components/quest/quest.component';
+import { HistoryComponent } from './components/history/history.component';
 
 // Our Array of Angular 2 Routes
 const appRoutes: Routes = [
   {
     path: '',
     component: HomeComponent // The Default Route
+  },
+  {
+    path: 'history',
+    component: HistoryComponent // The HistoryComponent Route
+  },
+  {
+    path: 'quests',
+    component: QuestComponent // The QuestComponent Route
+  },
+  {
+    path: 'lastResultComponent',
+    component: LastResultComponent // The LastResultComponent Route
   },
   {
     path: 'dashboard',
@@ -49,6 +66,10 @@ const appRoutes: Routes = [
     component: Questionnaire1Component // The Quest1 Route
   },
   {
+    path: 'admin',
+    component: AdminComponent // TheR esultComponent Route
+  },
+  {
     path: 'questionnaire2',
     component: Questionnaire2Component // The Quest1 Route
   },
@@ -67,6 +88,10 @@ const appRoutes: Routes = [
   {
     path: 'questionnaire6',
     component: Questionnaire6Component // The Quest6 Route
+  },
+  {
+    path: 'result',
+    component: ResultComponent // TheR esultComponent Route
   },
   { path: '**', component: HomeComponent } // The "Catch-All" Route
 ];

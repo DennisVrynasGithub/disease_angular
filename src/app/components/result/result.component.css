@@ -1,0 +1,17 @@
+.dISEASE{
+	list-style-type: none;
+}
+#fact_id_disease{
+	color: blue;
+	font-size: medium;
+}
+#fact_disease{
+	color: blue;
+	font-size: medium;
+}
+#add_button{
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-bottom: 3px;
+	padding-top: 3px;
+}

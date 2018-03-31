@@ -1,85 +1,90 @@
-<h1 class="page-header">Ασθένεια</h1>
+<h1 class="page-header">Browse disease</h1>
+
+<div class="row show-hide-message">
+  <div [ngClass]="messageClass">
+    {{ message }}
+  </div>
+</div>
 
 <!-- Registration Form -->
 <nav class="disease_disease">
   <form [formGroup]="form" (submit)="onDiseaseSubmit()">
+      <label>Type the disease that you want</label>
 
     <div class="form-group">
-      <label>Πληκτρολογείστε την ασθένεια που θέλετε να αναζητήσετε</label>
-      <input type="text"
+      <input id="disease_input"
+	         type="text"
              class="form-control"
              autocomplete="off"
              placeholder="*disease"
              [(ngModel)]="selected"
              [typeahead]="states"
              formControlName="disease"/>
+			 <input type="submit" class="btn btn-primary" value="Find disease"/>
     </div>
-
-    <input type="submit" class="btn btn-primary" value="Εμφάνισε"/>
-
 
     <div class="dISEASE">
       <li id="disease_li" *ngFor="let user of dISEASE">
         <label id="fact_id_disease"> {{user.factid}} </label>
         <label id="fact_disease"> {{user.fact}} </label>
         <label id="descripition_disease"> {{user.description}} </label>
+		<label *ngIf="view(user.id)"></label>
       </li>
+	<div id="add_button_new" >
+	<button *ngIf="view_button()" (click)="adDisease()"
+              value="Submit"
+              class="btn btn-primary"><i class="fa fa-plus-circle"></i> add 
+      </button>
+	  </div>
     </div>
   </form>
 
   <br>
-  <div class="letters">
-
-    <ol>
-      <li>Επέλεξε το γράμμα για το οποίο θες να δείς όλες τις ασθένειες</li>
-      <li>Επέλεξε το πλήκτρο Εμφάνισε όλες</li>
-    </ol>
+  <br>
+<div class="letters">
 
     <div class="form-group">
-      <label>Διάλεξε το γράμμα που θέλεις</label>
+      <label>Choose the letter you want</label>
     </div>
 
-    <input (click)="findLetter('A%')" type="submit" class="btn btn-primary" value="A"/>
-    <input (click)="findLetter('B%')" type="submit" class="btn btn-primary" value="B"/>
-    <input (click)="findLetter('C%')" type="submit" class="btn btn-primary" value="C"/>
-    <input (click)="findLetter('D%')" type="submit" class="btn btn-primary" value="D"/>
-    <input (click)="findLetter('E%')" type="submit" class="btn btn-primary" value="E"/>
-    <input (click)="findLetter('F%')" type="submit" class="btn btn-primary" value="F"/>
-    <input (click)="findLetter('G%')" type="submit" class="btn btn-primary" value="G"/>
-    <input (click)="findLetter('H%')" type="submit" class="btn btn-primary" value="H"/>
-    <input (click)="findLetter('I%')" type="submit" class="btn btn-primary" value="I"/>
-    <input (click)="findLetter('J%')" type="submit" class="btn btn-primary" value="J"/>
-    <input (click)="findLetter('K%')" type="submit" class="btn btn-primary" value="K"/>
-    <input (click)="findLetter('L%')" type="submit" class="btn btn-primary" value="L"/>
-    <input (click)="findLetter('M%')" type="submit" class="btn btn-primary" value="M"/>
-    <input (click)="findLetter('N%')" type="submit" class="btn btn-primary" value="N"/>
-    <input (click)="findLetter('O%')" type="submit" class="btn btn-primary" value="O"/>
-    <input (click)="findLetter('P%')" type="submit" class="btn btn-primary" value="P"/>
-    <input (click)="findLetter('Q%')" type="submit" class="btn btn-primary" value="Q"/>
-    <input (click)="findLetter('R%')" type="submit" class="btn btn-primary" value="R"/>
-    <input (click)="findLetter('S%')" type="submit" class="btn btn-primary" value="S"/>
-    <input (click)="findLetter('T%')" type="submit" class="btn btn-primary" value="T"/>
-    <input (click)="findLetter('U%')" type="submit" class="btn btn-primary" value="U"/>
-    <input (click)="findLetter('V%')" type="submit" class="btn btn-primary" value="V"/>
-    <input (click)="findLetter('W%')" type="submit" class="btn btn-primary" value="W"/>
-    <input (click)="findLetter('X%')" type="submit" class="btn btn-primary" value="X"/>
-    <input (click)="findLetter('Y%')" type="submit" class="btn btn-primary" value="Y"/>
-    <input (click)="findLetter('Z%')" type="submit" class="btn btn-primary" value="Z"/>
-
+  <input id="button1" (click)="findLetter('A%')" type="submit" class="btn btn-primary" value="A"/>
+  <input id="button2" (click)="findLetter('B%')" type="submit" class="btn btn-primary" value="B"/>
+  <input id="button3" (click)="findLetter('C%')" type="submit" class="btn btn-primary" value="C"/>
+  <input id="button4" (click)="findLetter('D%')" type="submit" class="btn btn-primary" value="D"/>
+  <input id="button5" (click)="findLetter('E%')" type="submit" class="btn btn-primary" value="E"/>
+  <input id="button6" (click)="findLetter('F%')" type="submit" class="btn btn-primary" value="F"/>
+  <input id="button7" (click)="findLetter('G%')" type="submit" class="btn btn-primary" value="G"/>
+  <input id="button8" (click)="findLetter('H%')" type="submit" class="btn btn-primary" value="H"/>
+  <input id="button9" (click)="findLetter('I%')" type="submit" class="btn btn-primary" value="I"/>
+  <input id="button10" (click)="findLetter('J%')" type="submit" class="btn btn-primary" value="J"/>
+  <input id="button11" (click)="findLetter('K%')" type="submit" class="btn btn-primary" value="K"/>
+  <input id="button12" (click)="findLetter('L%')" type="submit" class="btn btn-primary" value="L"/>
+  <input id="button13" (click)="findLetter('M%')" type="submit" class="btn btn-primary" value="M"/>
+  <input id="button14" (click)="findLetter('N%')" type="submit" class="btn btn-primary" value="N"/>
+  <input id="button15" (click)="findLetter('O%')" type="submit" class="btn btn-primary" value="O"/>
+  <input id="button16" (click)="findLetter('P%')" type="submit" class="btn btn-primary" value="P"/>
+  <input id="button17" (click)="findLetter('Q%')" type="submit" class="btn btn-primary" value="Q"/>
+  <input id="button18" (click)="findLetter('R%')" type="submit" class="btn btn-primary" value="R"/>
+  <input id="button19" (click)="findLetter('S%')" type="submit" class="btn btn-primary" value="S"/>
+  <input id="button20" (click)="findLetter('T%')" type="submit" class="btn btn-primary" value="T"/>
+  <input id="button21" (click)="findLetter('U%')" type="submit" class="btn btn-primary" value="U"/>
+  <input id="button22" (click)="findLetter('V%')" type="submit" class="btn btn-primary" value="V"/>
+  <input id="button23" (click)="findLetter('W%')" type="submit" class="btn btn-primary" value="W"/>
+  <input id="button24" (click)="findLetter('X%')" type="submit" class="btn btn-primary" value="X"/>
+  <input id="button25" (click)="findLetter('Y%')" type="submit" class="btn btn-primary" value="Y"/>
+  <input id="button26" (click)="findLetter('Z%')" type="submit" class="btn btn-primary" value="Z"/>
+<br>
+<br>
     <div class="dISEASEletter">
       <li id="dISEASEletter_li" *ngFor="let user of dISEASEletter">
-        <label id="username_1"> {{user.name}} </label>
-        <label id="factid_1"> {{user.factid}} </label>
-        <label id="fact_1"> {{user.fact}} </label>
+        <label id="username_1"> {{user.name}}   <span><button id="button_inside" (click)="viewmore(user.name)"
+              value="Submit"
+              class="btn btn-primary"><i class="fa fa-info-circle"></i> details
+      </button></span></label>
         <label id="description_1"> {{user.description}} </label>
-      </li>
+        </li>
     </div>
   </div>
 
-  <br>
-  <form [formGroup]="form" (submit)="onFindLetterSubmit()">
 
-    <input type="submit" class="btn btn-primary" value="Εμφάνισε όλες"/>
-
-  </form>
 </nav>

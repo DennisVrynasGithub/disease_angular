@@ -1,0 +1,21 @@
+<!-- Custom Success/Error Message -->
+<div class="row show-hide-message">
+  <div [ngClass]="messageClass">
+    {{ message }}
+  </div>
+</div>
+
+<h1 class="page-header">Details for disease {{a}}  <span><button id="add_button" (click)="adDisease()"
+              value="Submit"
+              class="btn btn-primary"><i class="fa fa-plus-circle"></i>   add 
+      </button></span></h1>
+
+	  <!--  id="button_inside" (click)=""  -->
+	  
+<div class="dISEASE">
+  <li id="disease_li" *ngFor="let user of results">
+    <h3 id="fact_disease"> {{user.fact}} </h3>
+    <p id="descripition_disease"> {{user.description}} </p>
+    <label *ngIf="view(user.id)"></label>
+  </li>
+</div>

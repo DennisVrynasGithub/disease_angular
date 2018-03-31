@@ -1,5 +1,4 @@
-<h1 class="page-header">Ερωτηματολόγιο για τη στεφανιαία νόσο</h1>
-<label class="naming">{{da}}</label>
+<h1 class="page-header">Questionnaire for coronary heart disease</h1>
 
 <nav class="disease_disease">
 
@@ -10,12 +9,12 @@
     </div>
   </div>
 
-  <div id="first_quest">
+  <div *ngIf="viewing1()" id="first_quest">
     <form [formGroup]="form">
       <div class="Q1">
-        <label>Πόσο νωρίς διαγνωστίκατε με τη στεφανιαία νόσο;</label>
-        <p>1 -> Αρκετά νωρίς</p>
-        <p>10 -> Αρκετά αργά</p>
+        <label>How early did you diagnose with coronary heart disease?</label>
+        <p>1 -> Very soon</p>
+        <p>10 -> Very late</p>
         <!-- for each day in the days array -->
         <div *ngFor="let day of days">
           <!-- create a radio button-->
@@ -27,24 +26,24 @@
           <i>{{day}}</i>
         </div>
         <!-- the radio button change will be reflected below -->
-        <p><span>Επέλεξες: </span><b>{{selectedDay}}</b></p>
+        <p><span>You choose: </span><b>{{selectedDay}}</b></p>
       </div>
     </form>
 
     <div class="next">
-      <button (click)="changeShow()"
+      <button (click)="changeShow1()"
               value="Submit"
-              class="btn btn-danger navbar-btn">Επόμενο
+              class="btn btn-primary navbar-btn">Next <i class="fa fa-chevron-circle-right"></i>
       </button>
     </div>
   </div>
 
-  <div id="first_quest1">
+  <div *ngIf="viewing2()" id="first_quest1">
     <form [formGroup]="form">
-      <div *ngIf="viewing()" class="age">
-        <label>Πόσο έντονα ήταν τα συμπτώματα;</label>
-        <p>1 -> Καθόλου έντονα</p>
-        <p>10 -> Πολύ έντονα</p>
+      <div class="age">
+        <label>How severe were the symptoms?</label>
+        <p>1 -> Not at all</p>
+        <p>10 -> Intensively</p>
         <!-- for each day in the days array -->
         <div *ngFor="let day of days2">
           <!-- create a radio button-->
@@ -56,24 +55,30 @@
           <i>{{day}}</i>
         </div>
         <!-- the radio button change will be reflected below -->
-        <p><span>Επέλεξες: </span><b>{{selectedDay2}}</b></p>
+        <p><span>You choose: </span><b>{{selectedDay2}}</b></p>
       </div>
     </form>
 
-    <div *ngIf="viewing()" class="next">
+    <div class="previous">
+      <button (click)="changeShow1()"
+              value="Submit"
+              class="btn btn-danger navbar-btn"><i class="fa fa-chevron-circle-left"></i> Previous
+      </button>
+    </div>
+    <div class="next">
       <button (click)="changeShow2()"
               value="Submit"
-              class="btn btn-danger navbar-btn">Επόμενο
+              class="btn btn-primary navbar-btn">Next <i class="fa fa-chevron-circle-right"></i>
       </button>
     </div>
   </div>
 
-  <div id="first_quest2">
+  <div *ngIf="viewing3()" id="first_quest2">
     <form [formGroup]="form">
-      <div *ngIf="viewing2()" class="illnes">
-        <label>Ποια πιστεύεται είναι η πορεία της θεραπείας που ακλουθείτε;</label>
-        <p>1 -> Δεν έχει αποτέλεσμα</p>
-        <p>10 -> Είναι πλήρως αποτελεσματική</p>
+      <div class="illnes">
+        <label>What do you think is the course of treatment you are following?</label>
+        <p>1 -> It is fully effective</p>
+        <p>10 -> It is not effective</p>
         <!-- for each day in the days array -->
         <div *ngFor="let day of days3">
           <!-- create a radio button-->
@@ -85,24 +90,30 @@
           <i>{{day}}</i>
         </div>
         <!-- the radio button change will be reflected below -->
-        <p><span>Επέλεξες: </span><b>{{selectedDay3}}</b></p>
+        <p><span>You choose: </span><b>{{selectedDay3}}</b></p>
       </div>
     </form>
 
-    <div *ngIf="viewing2()" class="next">
+    <div class="previous">
+      <button (click)="changeShow2()"
+              value="Submit"
+              class="btn btn-danger navbar-btn"><i class="fa fa-chevron-circle-left"></i> Previous
+      </button>
+    </div>
+    <div class="next">
       <button (click)="changeShow3()"
               value="Submit"
-              class="btn btn-danger navbar-btn">Επόμενο
+              class="btn btn-primary navbar-btn">Next <i class="fa fa-chevron-circle-right"></i>
       </button>
     </div>
   </div>
 
-  <div id="first_quest3">
+  <div *ngIf="viewing4()" id="first_quest3">
     <form [formGroup]="form">
-      <div *ngIf="viewing3()" class="medication">
-        <label>Πισεύεται προκάλεσε άλλες παθήσεις;</label>
-        <p>1 -> Δεν προκάλεσε καμία</p>
-        <p>10 -> Προκάλεσε πολλές</p>
+      <div class="medication">
+        <label>Does it have caused other diseases?</label>
+        <p>1 -> It did not cause any</p>
+        <p>10 -> It cause many others</p>
         <!-- for each day in the days array -->
         <div *ngFor="let day of days4">
           <!-- create a radio button-->
@@ -114,24 +125,31 @@
           <i>{{day}}</i>
         </div>
         <!-- the radio button change will be reflected below -->
-        <p><span>Επέλεξες: </span><b>{{selectedDay4}}</b></p>
+        <p><span>You choose: </span><b>{{selectedDay4}}</b></p>
       </div>
     </form>
 
-    <div *ngIf="viewing3()" class="next">
-      <button (click)="changeShow4()"
+    <div class="previous">
+      <button (click)="changeShow3()"
               value="Submit"
-              class="btn btn-danger navbar-btn">Επόμενο
+              class="btn btn-danger navbar-btn"><i class="fa fa-chevron-circle-left"></i> Previous
+      </button>
+    </div>
+    <div class="next">
+      <button (click)="changeShow5()"
+              value="Submit"
+              class="btn btn-primary navbar-btn">Next <i class="fa fa-chevron-circle-right"></i>
       </button>
     </div>
   </div>
 
-  <div id="first_quest4">
-    <form [formGroup]="form" (submit)="onQ6()">
-      <div *ngIf="viewing4()" class="procedure">
-        <label>Πόσο ευχαριστημένος νιώθετε με τη θεραπεία;</label>
-        <p>1 -> Απόλυτα απογοητευμένος</p>
-        <p>10 -> Πολύ ευχαριστημένος</p>
+  
+  <div *ngIf="viewing6()" id="first_quest4">
+    <form [formGroup]="form">
+      <div class="procedure">
+        <label>How satisfied are you with the treatment?</label>
+        <p>1 -> Very disappointed</p>
+        <p>10 -> Very happy</p>
         <!-- for each day in the days array -->
         <div *ngFor="let day of days5">
           <!-- create a radio button-->
@@ -143,28 +161,21 @@
           <i>{{day}}</i>
         </div>
         <!-- the radio button change will be reflected below -->
-        <p><span>Επέλεξες: </span><b>{{selectedDay5}}</b></p>
+        <p><span>You choose: </span><b>{{selectedDay5}}</b></p>
+		
+    <div class="previous">
+      <button (click)="changeShow4()"
+              value="Submit"
+              class="btn btn-danger navbar-btn"><i class="fa fa-chevron-circle-left"></i> Previous
+      </button>
       </div>
-      <div *ngIf="viewing4()" class="next">
-        <input type="submit" class="btn btn-primary" value="Αποστολή"/>
+      <div class="next">
+        <button (click)="onQ6()"
+              value="Submit"
+              class="btn btn-primary navbar-btn">Send <i class="fa fa-send"></i>
+      </button>
       </div>
+    </div>
     </form>
-    <div *ngIf="viewresult()">
-      <h3 class="lowres">Το σκορ σας είναι {{sum}}</h3>
-      <h3 class="lowres">Επίδραση : Χαμηλή</h3>
-      <h3 class="lowres">Σε κάθε περίπτωση επισκεφθείτε το γιατρό σας</h3>
-    </div>
-
-    <div *ngIf="viewresult2()">
-      <h3 class="medres">Το σκορ σας είναι {{sum}}</h3>
-      <h3 class="medres">Επίδραση : Μέτρια</h3>
-      <h3 class="medres">Σε κάθε περίπτωση επισκεφθείτε το γιατρό σας</h3>
-    </div>
-
-    <div *ngIf="viewresult3()">
-      <h3 class="hires">Το σκορ σας είναι {{sum}}</h3>
-      <h3 class="hires">Επίδραση : Υψηλή</h3>
-      <h3 class="hires">Σε κάθε περίπτωση επισκεφθείτε το γιατρό σας</h3>
-    </div>
   </div>
 </nav>

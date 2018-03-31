@@ -1,0 +1,34 @@
+.uSERS{
+	width: 100%;
+	list-style-type: none;
+}
+
+.uSER{
+	list-style-type: none;
+}
+
+#button_inside1,#button_inside2,#button_inside3,#button_inside4,#button_inside5,#button_inside6{
+	border-radius: 5%;
+	margin-left: 5px;
+}
+#button_inside1{
+	
+}
+#button_inside2{
+	
+}
+#button_inside3{
+	
+}
+#button_inside4{
+	
+}
+#button_inside5{
+	
+}
+#button_inside6{
+	
+}
+#admin_1{
+	text-align: center;
+}

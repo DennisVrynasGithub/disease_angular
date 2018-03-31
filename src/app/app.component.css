@@ -1,6 +1,16 @@
-
 @media screen and (max-width: 1600px) {
   .container {
+    width: 80%;
     margin-left: 200px;
   }
+}
+
+@media screen and (max-width: 800px) {
+  .container {
+    width: 50%;
+    margin-left: 300px;
+  }
+}
+.image{
+	float: right;
 }

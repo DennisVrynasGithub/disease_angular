@@ -42,38 +42,34 @@
 
 #first_quest{
   float: left;
-  margin-right: 70px;
+  margin-right: 50px;
 }
 
 #first_quest1{
   float: left;
-  margin-right: 70px;
+  margin-right: 50px;
 }
 
 #first_quest2{
   float: left;
-  margin-right: 70px;
+  margin-right: 50px;
 }
+
 
 #first_quest3{
   float: left;
-  margin-right: 70px;
+  margin-right: 50px;
 }
 
 #first_quest4{
   float: left;
-  margin-right: 70px;
+  margin-right: 50px;
 }
 
-#first_quest5{
-  float: left;
-  margin-right: 70px;
-}
 
 #q4_width,#q4_width1{
   width: 70%;
 }
-
 
 .lowres{
   color: dodgerblue;
@@ -85,4 +81,8 @@
 
 .hires{
   color: darkred;
+}
+.previous{
+  float: left;
+  margin-right: 10px;
 }

@@ -75,3 +75,7 @@
 .hires{
   color: darkred;
 }
+.previous{
+  float: left;
+  margin-right: 10px;
+}

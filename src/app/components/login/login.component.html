@@ -1,4 +1,4 @@
-<h1 class="page-header">Σελίδα σύνδεσης</h1>
+<h1 class="page-header">Sign in page</h1>
 
 <!-- Custom Success/Error Message -->
 <div class="row show-hide-message">
@@ -7,15 +7,15 @@
   </div>
 </div>
 
-<p>Για να συνδεθείτε στην εφαρμογή ακολουθήστε τα παρακάτω βήματα:</p>
+<p>If you want to log in please follow the next step:</p>
 <ol>
-  <li>Συμπλήρωσε το πεδίο: email</li>
-  <li>Συμπλήρωσε το πεδίο: κωδικός χρήστη</li>
-  <li>Σύνδεση στην εφαρμογή</li>
+  <li>Fill the field: <strong>email</strong></li>
+  <li>Fill the field: <strong>user password</strong></li>
+  <li>Press the log in button</li>
 </ol>
 
 <!-- Login Form -->
-<form [formGroup]="form" (submit)="onLoginSubmit()">
+<form [formGroup]="form">
 
   <!-- Email Input -->
   <div class="form-group">
@@ -34,8 +34,8 @@
 
   <!-- Password Input -->
   <div class="form-group">
-    <label>Κωδικός χρήστη</label>
-    <input type="text"
+    <label>User password</label>
+    <input type="password"
            name="user_password"
            class="form-control"
            autocomplete="on"
@@ -48,7 +48,10 @@
   </div>
 
   <!-- Submit Input -->
-  <input type="submit" class="btn btn-primary" value="Σύνδεση"/>
+  <button (click)="onLoginSubmit()"
+              value="Submit"
+              class="btn btn-primary"><i class="fa fa-unlock-alt"></i> Login
+      </button>
 
 </form>
 <!-- Login Form /-->

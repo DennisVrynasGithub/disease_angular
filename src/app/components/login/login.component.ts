@@ -69,6 +69,7 @@ export class LoginComponent implements OnInit {
             // Function to store user's token in client local storage
             this.y = response.user_email;
             this.authService.takeEmail(this.form.get('user_email').value);
+            this.authService.takepassword(this.form.get('user_password').value);
             this.authService.storeUserData(this.y, this.loged_in);
             // After 2 seconds, redirect to dashboard page
             setTimeout(() => {

@@ -21,6 +21,11 @@ import { Questionnaire4Component } from './components/questionnaire4/questionnai
 import { Questionnaire5Component } from './components/questionnaire5/questionnaire5.component';
 import { Questionnaire6Component } from './components/questionnaire6/questionnaire6.component';
 import { TypeaheadModule } from 'ngx-bootstrap';
+import { ResultComponent } from './components/result/result.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { LastResultComponent } from './components/last-result/last-result.component';
+import { QuestComponent } from './components/quest/quest.component';
+import { HistoryComponent } from './components/history/history.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +44,12 @@ import { TypeaheadModule } from 'ngx-bootstrap';
     Questionnaire3Component,
     Questionnaire4Component,
     Questionnaire5Component,
-    Questionnaire6Component
+    Questionnaire6Component,
+    ResultComponent,
+	AdminComponent,
+	LastResultComponent,
+	QuestComponent,
+	HistoryComponent
   ],
   imports: [
     BrowserModule,

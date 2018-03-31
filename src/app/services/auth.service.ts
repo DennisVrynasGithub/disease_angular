@@ -13,8 +13,28 @@ export class AuthService {
   close = true;
   taken_user_email;
   taken_user_id;
+  a;
+admin;
+sum;
+taken_user_password;
 
   constructor(private http: Http) {
+  }
+
+
+  // history add disease
+  add_disease_history(user) {
+    return this.http.post(this.domain + '/index/addHistory', user).map(res => res.json());
+  }
+
+  // View list history
+  delete_disease_history(id, disease_id) {
+    return this.http.delete(this.domain + '/index/deleteHistory?id=' + id +'&disease_id=' + disease_id).map(response => response.json());
+  }
+
+  // View list history
+  get_disease_history(user_id) {
+    return this.http.get(this.domain + '/index/getHistory?user_id=' + user_id).map(response => response.json());
   }
 
   // Function to register user accounts
@@ -23,7 +43,59 @@ export class AuthService {
       this.domain + '/index/createUser',
       user).map(res => res.json());
   }
+  
+  // quest1
+  admin_quest1(user_id) {
+    return this.http.get(
+      this.domain + '/index/result_quest_1?user_id=' + user_id).map(res => res.json());
+  }
+  
+  // quest1
+  admin_quest2(user_id) {
+    return this.http.get(
+      this.domain + '/index/result_quest_2?user_id=' + user_id).map(res => res.json());
+  }
+  
+  // quest1
+  admin_quest3(user_id) {
+    return this.http.get(
+      this.domain + '/index/result_quest_3?user_id=' + user_id).map(res => res.json());
+  }
+  
+  // quest1
+  admin_quest4(user_id) {
+    return this.http.get(
+      this.domain + '/index/result_quest_4?user_id=' + user_id).map(res => res.json());
+  }
+  
+  // quest1
+  admin_quest5(user_id) {
+    return this.http.get(
+      this.domain + '/index/result_quest_5?user_id=' + user_id).map(res => res.json());
+  }
+  
+  // quest1
+  admin_quest6(user_id) {
+    return this.http.get(
+      this.domain + '/index/result_quest_6?user_id=' + user_id).map(res => res.json());
+  }
 
+    adminlogin(){
+    if (this.loggedIn()){
+      if (localStorage.getItem('user_email') === 'dionisis@gmail.com') {
+        if (localStorage.getItem('user_password') === 'dennis') {
+          this.admin = true;
+		  console.log('yes');
+          return this.admin;
+        }
+      }
+    }else{
+      this.admin = false;
+	  console.log('no');
+      return this.admin;
+    }
+  }
+  
   // Function to register user accounts
   quest1(user) {
     return this.http.post(this.domain + '/index/quest1', user).map(response => response.json());
@@ -59,6 +131,11 @@ export class AuthService {
     return this.http.get(this.domain + '/index/getDisease?disease=' + disease).map(response => response.json());
   }
 
+  // View user list
+  view_list() {
+    return this.http.get(this.domain + '/index/getListUsers').map(response => response.json());
+  }
+
 
   getDiseaseFromLetter(letter) {
     return this.http.get(this.domain + '/index/getDiseaseFromLetter?letter=' + letter).map(response => response.json());
@@ -75,8 +152,28 @@ export class AuthService {
   }
 
   // View only one disease
-  getSymptomTwo(user) {
-    return this.http.get(this.domain + '/index/getSymptomsTwo?symptom=' + user.symptom+'&symptom1='+ user.symptom1).map(response => response.json());
+    getSymptomSix(a,b,c,d,e,f) {
+    return this.http.get(this.domain + '/index/getSymptomsSix?a=' + a+'&b='+ b+'&c='+ c+'&d='+ d+'&e='+ e+'&f='+ f).map(response => response.json());
+  }
+  // View only one disease
+  getSymptomFive(a,b,c,d,e) {
+    return this.http.get(this.domain + '/index/getSymptomsFive?a=' + a+'&b='+ b+'&c='+ c+'&d='+ d+'&e='+ e).map(response => response.json());
+  }
+  // View only one disease
+  getSymptomFour(a,b,c,d) {
+    return this.http.get(this.domain + '/index/getSymptomsFour?a=' + a+'&b='+ b+'&c='+ c+'&d='+ d).map(response => response.json());
+  }
+  // View only one disease
+  getSymptomThree(a,b,c) {
+    return this.http.get(this.domain + '/index/getSymptomsThree?a=' + a+'&b='+ b+'&c='+ c).map(response => response.json());
+  }
+  // View only one disease
+  getSymptomTwo(a,b) {
+    return this.http.get(this.domain + '/index/getSymptomsTwo?a=' + a+'&b='+ b).map(response => response.json());
+  }
+  // View only one disease
+  getSymptomOne(a) {
+    return this.http.get(this.domain + '/index/getSymptomsOne?a=' + a).map(response => response.json());
   }
 
 
@@ -87,7 +184,7 @@ export class AuthService {
 
   // Function to login user
   login(user) {
-    return this.http.get(this.domain + '/index/loginUser?user_email=' + user.user_email + '&user_password=' + user.user_password).map(response => response.json());
+    return this.http.post(this.domain + '/index/loginUser', user).map(response => response.json());
   }
 
   // Function to store user's data in client local storage
@@ -100,6 +197,8 @@ export class AuthService {
   storeUserLoginData(login_user) {
     localStorage.removeItem('loged_in'); // Set user in local storage as string
     localStorage.removeItem('user_email'); // Set user in local storage as string
+    localStorage.removeItem('user_password'); // Set user in local storage as string
+    localStorage.removeItem('user_id'); // Set user in local storage as string
   }
 
   putChangeName(user) {
@@ -125,18 +224,45 @@ export class AuthService {
   }
 
   takeEmail(user_email) {
+	  localStorage.setItem('user_email', user_email);
     this.taken_user_email = user_email;
   }
 
+  takepassword(user_password) {
+	  localStorage.setItem('user_password', user_password);
+    this.taken_user_password = user_password;
+  }
+  
   sendEmail(){
+	  this.taken_user_email = localStorage.getItem('user_email');
    return  this.taken_user_email;
   }
 
   takeId(user_id){
+	  console.log(user_id);
+	  localStorage.setItem('user_id', user_id);
     this.taken_user_id = user_id;
   }
 
   sendId(){
+	  this.taken_user_id = localStorage.getItem('user_id');
     return  this.taken_user_id;
+  }
+  
+  saveSum(sum){
+	  localStorage.setItem('sum', sum);
+	  this.sum = sum;
+  }
+  
+  loadSum(){
+	  this.sum = localStorage.getItem('sum');
+    return  this.sum;
+  }
+  
+  takediseasename(a){
+    this.a = a;
+  }
+  senddiseasename(){
+    return this.a;
   }
 }

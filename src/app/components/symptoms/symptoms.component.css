@@ -15,17 +15,20 @@
 }
 
 #username_2,#username_22{
-  color: red;
+	font-size: medium;
+  color: blue;
 }
 
 #factid_2,#factid_22{
-  color: rebeccapurple;
-}
-
-#fact_2,#fact_22{
-  color: rebeccapurple;
+  color: red;
 }
 
 #description_2,#description_22{
-  color: blue;
+  color: black;
+}
+#button_inside{
+  font-size: small;
+  height: 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
 }

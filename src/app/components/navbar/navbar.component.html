@@ -1,7 +1,7 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Ασθένεια-Σύμπτωμα</a>
+      <a class="navbar-brand" href="#">Disease-Symptom</a>
     </div>
     <ul class="nav navbar-nav">
       <li>
@@ -21,7 +21,7 @@
            routerLink="/diseases"
            class="list-group-item">
           <i class="fa fa-flask"></i>
-          Ασθένεια
+          Disease
         </a>
       </li>
       <li>
@@ -31,9 +31,38 @@
            routerLink="/symptoms"
            class="list-group-item">
           <i class="fa fa-heartbeat"></i>
-          Σύμπτωμα
+          Symptom
         </a>
       </li>
+	  <li><a *ngIf="authService.loggedIn() && !authService.adminlogin()" class="list-group-item" data-toggle="collapse" data-target="#submenu1"
+           aria-expanded="false"><i class="fa fa-caret-down"></i> Questionnaires</a>
+      <ul class="nav collapse" id="submenu1" role="menu" aria-labelledby="btn-1">
+        <li><a *ngIf="authService.loggedIn()" [routerLinkActive]="['active']"
+               [routerLinkActive]="['router-link-active']"
+               routerLink="/questionnaire1" class="list-group-item_1">
+          <i class="fa fa-file-text"></i> 1st Questionnaire</a></li>
+        <li><a *ngIf="authService.loggedIn()" [routerLinkActive]="['active']"
+               [routerLinkActive]="['router-link-active']"
+               routerLink="/questionnaire2" class="list-group-item_1">
+          <i class="fa fa-file-text"></i> 2nd Questionnaire</a></li>
+        <li><a *ngIf="authService.loggedIn()" [routerLinkActive]="['active']"
+               [routerLinkActive]="['router-link-active']"
+               routerLink="/questionnaire3" class="list-group-item_1">
+          <i class="fa fa-file-text"></i> 3rd Questionnaire</a></li>
+        <li><a *ngIf="authService.loggedIn()" [routerLinkActive]="['active']"
+               [routerLinkActive]="['router-link-active']"
+               routerLink="/questionnaire4" class="list-group-item_1">
+          <i class="fa fa-file-text"></i> 4th Questionnaire</a></li>
+        <li><a *ngIf="authService.loggedIn()" [routerLinkActive]="['active']"
+               [routerLinkActive]="['router-link-active']"
+               routerLink="/questionnaire5" class="list-group-item_1">
+          <i class="fa fa-file-text"></i> 5th Questionnaire</a></li>
+        <li><a *ngIf="authService.loggedIn()" [routerLinkActive]="['active']"
+               [routerLinkActive]="['router-link-active']"
+               routerLink="/questionnaire6" class="list-group-item_1">
+          <i class="fa fa-file-text"></i> 6th Questionnaire</a></li>
+      </ul>
+    </li>
       <li>
         <a *ngIf="authService.loggedIn()"
            [routerLinkActive]="['active']"
@@ -41,78 +70,11 @@
            routerLink="/profile"
            class="list-group-item">
           <i class="fa fa-drivers-license-o"></i>
-          Προφίλ
-        </a>
-      </li>
-      <li>
-        <a *ngIf="authService.loggedIn()"
-           [routerLinkActive]="['active']"
-           [routerLinkActive]="['router-link-active']"
-           routerLink="/questionnaire1"
-           class="list-group-item">
-          <i class="fa fa-drivers-license-o"></i>
-          1ο Ερωτηματολόγιο
-        </a>
-      </li>
-      <li>
-        <a *ngIf="authService.loggedIn()"
-           [routerLinkActive]="['active']"
-           [routerLinkActive]="['router-link-active']"
-           routerLink="/questionnaire2"
-           class="list-group-item">
-          <i class="fa fa-drivers-license-o"></i>
-          2ο Ερωτηματολόγιο
-        </a>
-      </li>
-      <li>
-        <a *ngIf="authService.loggedIn()"
-           [routerLinkActive]="['active']"
-           [routerLinkActive]="['router-link-active']"
-           routerLink="/questionnaire3"
-           class="list-group-item">
-          <i class="fa fa-drivers-license-o"></i>
-          3ο Ερωτηματολόγιο
-        </a>
-      </li>
-      <li>
-        <a *ngIf="authService.loggedIn()"
-           [routerLinkActive]="['active']"
-           [routerLinkActive]="['router-link-active']"
-           routerLink="/questionnaire4"
-           class="list-group-item">
-          <i class="fa fa-drivers-license-o"></i>
-          4ο Ερωτηματολόγιο
-        </a>
-      </li>
-      <li>
-        <a *ngIf="authService.loggedIn()"
-           [routerLinkActive]="['active']"
-           [routerLinkActive]="['router-link-active']"
-           routerLink="/questionnaire5"
-           class="list-group-item">
-          <i class="fa fa-drivers-license-o"></i>
-          5ο Ερωτηματολόγιο
-        </a>
-      </li>
-      <li>
-        <a *ngIf="authService.loggedIn()"
-           [routerLinkActive]="['active']"
-           [routerLinkActive]="['router-link-active']"
-           routerLink="/questionnaire6"
-           class="list-group-item">
-          <i class="fa fa-drivers-license-o"></i>
-          6ο Ερωτηματολόγιο
+          Profile
         </a>
       </li>
     </ul>
     <!--gia na emfanistei dexia-->
-    <ul class="nav navbar-nav navbar-right">
-      <input *ngIf="authService.loggedIn()"
-             id="logout_button"
-             class="btn btn-primary"
-             type="submit"
-             value="Αποσύνδεση"
-             (click)="onLogOutSubmit()" />
-    </ul>
+    
   </div>
 </nav>

@@ -25,11 +25,13 @@ export class Questionnaire5Component implements OnInit {
   days6: any = ['1','2','3','4','5','6','7','8','9','10'];
   messageClass;
   message;
-  shhow = false;
+  shhow1 = true;
   shhow2 = false;
   shhow3 = false;
   shhow4 = false;
   shhow5 = false;
+  shhow6 = false;
+  shhow7 = false;
   da;
 id;
   showresult=false;
@@ -66,29 +68,41 @@ id;
       new_medical: ['', Validators.compose([
         Validators.required, // Field is required
         Validators.minLength(3) // Minimum length is 3 characters
+      ])],
+      date: ['', Validators.compose([
+        Validators.required
       ])]
     }); // Add custom validator to form for matching passwords
   }
 
 
-  changeShow() {
-    this.shhow = !this.shhow;
+  changeShow1() {
+    this.shhow1 = !this.shhow1;
+    this.shhow2 = !this.shhow2;
   }
   changeShow2() {
     this.shhow2 = !this.shhow2;
+    this.shhow3 = !this.shhow3;
   }
   changeShow3() {
     this.shhow3 = !this.shhow3;
+    this.shhow4 = !this.shhow4;
   }
   changeShow4() {
     this.shhow4 = !this.shhow4;
+    this.shhow5 = !this.shhow5;
   }
   changeShow5() {
     this.shhow5 = !this.shhow5;
+    this.shhow7 = !this.shhow7;
+  }
+  changeShow6() {
+    this.shhow5 = !this.shhow5;
+    this.shhow7 = !this.shhow7;
   }
 
-  viewing() {
-    return this.shhow;
+  viewing1() {
+    return this.shhow1;
   }
 
   viewing2() {
@@ -105,6 +119,10 @@ id;
 
   viewing5() {
     return this.shhow5;
+  }
+
+  viewing7() {
+    return this.shhow7;
   }
 
   //event handler for the radio button's change event
@@ -142,33 +160,15 @@ id;
     //update the ui
     this.selectedDay6 = event.target.value;
   }
-
-  viewresult(){
-    return this.showresult;
-  }
-
-  viewresult2(){
-    return this.showresult2;
-  }
-
-  viewresult3(){
-    return this.showresult3;
-  }
-
+  
+last_result(sum){
+		this.authService.saveSum(sum);
+		this.router.navigate(['/lastResultComponent']);
+	}
 
   onQ5(){
-    // Create user object form user's inputs
-    const user = {
-      gender: this.selectedDay, // gender input field
-      age: this.selectedDay2, // age input field
-      illnes: this.selectedDay3, // illnes_history input field
-      medical: this.selectedDay4, // medical input field
-      side_effect: this.selectedDay5, // side_effect input field
-      new_medical: this.selectedDay6, // new_medical input field
-      id_2: this.id // gendre input field
-    };
-
-    var a = parseInt(this.selectedDay);
+	  
+	var a = parseInt(this.selectedDay);
     var b = parseInt(this.selectedDay2);
     var c = parseInt(this.selectedDay3);
     var d = parseInt(this.selectedDay4);
@@ -177,14 +177,20 @@ id;
 
     this.sum = a+b+c+d+e+f;
 
-    if (this.sum>=0 && this.sum<=30){
-      this.showresult =true;
-    }else if (this.sum>=31 && this.sum<=50){
-      this.showresult2 =true;
-    }else{
-      this.showresult3 =true;
-    }
+    // Create user object form user's inputs
+    const user = {
+      gender: this.selectedDay, // gender input field
+      age: this.selectedDay2, // age input field
+      illnes: this.selectedDay3, // illnes_history input field
+      medical: this.selectedDay4, // medical input field
+      side_effect: this.selectedDay5, // side_effect input field
+      new_medical: this.selectedDay6, // new_medical input field
+      date: this.form.get('date').value, // new_medical input field
+      sum: this.sum, // new_medical input field
+      id_2: this.id // gendre input field
+    };
 
+    
     // Function from authentication service to register user
     this.authService.quest5(user).subscribe(response => {
       // Resposne from registration attempt
@@ -196,17 +202,19 @@ id;
         this.messageClass = 'alert alert-success'; // Set a success class
         this.message = response.message; // Set a success message
         // After 2 second timeout, navigate to the login page
-        setTimeout(() => {
-          this.router.navigate(['/dashboard']); // Redirect to login view
-        }, 6000);
+        this.last_result(this.sum);
       }
     });
   }
 
   ngOnInit() {
     this.da = this.authService.sendEmail();
+    
     this.id = this.authService.sendId();
-    console.log(this.da);
+	console.log(this.id);
+	if (this.id == null){
+		this.router.navigate(['/home']);
+	}
   }
 
 }
