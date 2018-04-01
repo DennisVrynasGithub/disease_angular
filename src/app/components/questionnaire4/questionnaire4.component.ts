@@ -171,6 +171,11 @@ id;
 	}
 
   onQ4(){
+	  if (!this.selectedDay || !this.selectedDay2 || !this.selectedDay3 || !this.selectedDay6 || !this.selectedDay4 || !this.selectedDay5)
+	{ this.messageClass = 'alert alert-danger'; // Set an error class
+        this.message = "Invalid input"; // Set an error message
+		} 
+	else{
 	   var a = parseInt(this.selectedDay6);
     var c = parseInt(this.selectedDay3);
     var d = parseInt(this.selectedDay4);
@@ -191,8 +196,6 @@ id;
       id_2: this.id // gendre input field
     };
 
-   
-
     // Function from authentication service to register user
     this.authService.quest4(user).subscribe(response => {
       // Resposne from registration attempt
@@ -207,6 +210,7 @@ id;
        this.last_result(this.sum);
       }
     });
+	}
   }
 
   ngOnInit() {

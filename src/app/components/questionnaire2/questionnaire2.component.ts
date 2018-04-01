@@ -147,7 +147,11 @@ export class Questionnaire2Component implements OnInit {
 	}
 	
   onQ2() {
-	  
+	  if (!this.form.get('gender').value || !this.selectedDay2 || !this.selectedDay3 || !this.selectedDay4 || !this.selectedDay5)
+	{ this.messageClass = 'alert alert-danger'; // Set an error class
+        this.message = "Invalid input"; // Set an error message
+		} 
+	else{
     var a = parseInt(this.selectedDay2);
     var b = parseInt(this.selectedDay3);
     var c = parseInt(this.selectedDay4);
@@ -182,6 +186,7 @@ export class Questionnaire2Component implements OnInit {
 
       }
     });
+	}
   }
 
   ngOnInit() {

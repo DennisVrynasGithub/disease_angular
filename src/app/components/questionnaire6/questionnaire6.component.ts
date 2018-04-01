@@ -151,6 +151,11 @@ export class Questionnaire6Component implements OnInit {
 	}
 
   onQ6() {
+	  if (!this.selectedDay || !this.selectedDay2 || !this.selectedDay3 || !this.selectedDay4 || !this.selectedDay5)
+	{ this.messageClass = 'alert alert-danger'; // Set an error class
+        this.message = "Invalid input"; // Set an error message
+		} 
+	else{
 	  var a = parseInt(this.selectedDay);
     var b = parseInt(this.selectedDay2);
     var c = parseInt(this.selectedDay3);
@@ -185,6 +190,7 @@ export class Questionnaire6Component implements OnInit {
         this.last_result(this.sum);
       }
     });
+	}
   }
 
   ngOnInit() {
