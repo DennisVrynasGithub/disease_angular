@@ -18,12 +18,17 @@ import { AdminComponent } from './components/admin/admin.component';
 import { LastResultComponent } from './components/last-result/last-result.component';
 import { QuestComponent } from './components/quest/quest.component';
 import { HistoryComponent } from './components/history/history.component';
+import { AdminResultComponent } from './components/admin-result/admin-result.component';
 
 // Our Array of Angular 2 Routes
 const appRoutes: Routes = [
   {
     path: '',
     component: HomeComponent // The Default Route
+  },
+  {
+    path: 'admin_result',
+    component: AdminResultComponent // The AdminResultComponent Route
   },
   {
     path: 'history',

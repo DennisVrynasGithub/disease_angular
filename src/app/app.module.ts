@@ -26,6 +26,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { LastResultComponent } from './components/last-result/last-result.component';
 import { QuestComponent } from './components/quest/quest.component';
 import { HistoryComponent } from './components/history/history.component';
+import { AdminResultComponent } from './components/admin-result/admin-result.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { HistoryComponent } from './components/history/history.component';
 	AdminComponent,
 	LastResultComponent,
 	QuestComponent,
-	HistoryComponent
+	HistoryComponent,
+	AdminResultComponent
   ],
   imports: [
     BrowserModule,
