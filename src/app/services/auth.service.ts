@@ -17,6 +17,8 @@ export class AuthService {
 admin;
 sum;
 taken_user_password;
+id_for_admin_quest;
+que;
 
   constructor(private http: Http) {
   }
@@ -129,6 +131,36 @@ taken_user_password;
   // View only one disease
   getDisease(disease) {
     return this.http.get(this.domain + '/index/getDisease?disease=' + disease).map(response => response.json());
+  }
+
+  // View how many quest frisrt
+  getAdminFirstQuest(id_2) {
+    return this.http.get(this.domain + '/index/getNumberofFirstQuest?id_2=' + id_2).map(response => response.json());
+  }
+
+  // View how many quest frisrt
+  getAdminSecondQuest(id_2) {
+    return this.http.get(this.domain + '/index/getNumberofSecondQuest?id_2=' + id_2).map(response => response.json());
+  }
+
+  // View how many quest frisrt
+  getAdminThreeQuest(id_2) {
+    return this.http.get(this.domain + '/index/getNumberofThreeQuest?id_2=' + id_2).map(response => response.json());
+  }
+
+  // View how many quest frisrt
+  getAdminFourthQuest(id_2) {
+    return this.http.get(this.domain + '/index/getNumberofFourthQuest?id_2=' + id_2).map(response => response.json());
+  }
+
+  // View how many quest frisrt
+  getAdminFifthQuest(id_2) {
+    return this.http.get(this.domain + '/index/getNumberofFifthQuest?id_2=' + id_2).map(response => response.json());
+  }
+
+  // View how many quest frisrt
+  getAdminSixQuest(id_2) {
+    return this.http.get(this.domain + '/index/getNumberofSixthQuest?id_2=' + id_2).map(response => response.json());
   }
 
   // View user list
@@ -264,5 +296,16 @@ taken_user_password;
   }
   senddiseasename(){
     return this.a;
+  }
+  
+  take_id_for_admin_quest(id_for_admin_quest,que){
+    this.id_for_admin_quest = id_for_admin_quest;
+	this.que= que;
+  }
+  send_id_for_admin_quest(){
+    return this.id_for_admin_quest;
+  }
+  send_id_for_admin_quest1(){
+    return this.que;
   }
 }
