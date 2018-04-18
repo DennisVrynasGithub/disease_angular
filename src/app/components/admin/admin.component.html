@@ -1,43 +1,63 @@
 <div>
-  
+  <div class="row show-hide-message">
+  <div [ngClass]="messageClass">
+    {{ message }}
+  </div>
+</div>
   <!-- Output of data -->
   <div class="uSERS">
   <h3 id="admin_1">The admin can access in every questionnaire's result</h3>
     <li *ngFor="let users of uSER">
-      <h4 id="user_name">User with user name:<strong> {{users.user_name}}</strong>
-	    <span><button id="button_inside1" (click)="admin_quest1(users.user_id)"
-              value="Submit"
-              class="btn btn-primary">1st <span><div ></div></span>
-      </button>
-	  <button id="button_inside2" (click)="admin_quest2(users.user_id)"
+      <h4 id="user_name">User with user name:<strong> {{users.user_name}}</strong></h4>
+	  <p>Results for questionnaire 
+	      <span>
+		      <button id="button_inside1" (click)="admin_quest1(users.user_id)"
+                 value="Submit"
+                 class="btn btn-primary">1st
+              </button>
+		  </span>
+	   </p>
+	  <p>Results for questionnaire 
+	      <span>
+		      <button id="button_inside2" (click)="admin_quest2(users.user_id)"
               value="Submit"
               class="btn btn-primary">2nd 
-      </button>
-	  <button id="button_inside3" (click)="admin_quest3(users.user_id)"
+              </button>
+		  </span>
+	   </p>
+	  <p>Results for questionnaire 
+	      <span>
+		      <button id="button_inside3" (click)="admin_quest3(users.user_id)"
               value="Submit"
               class="btn btn-primary">3rd 
-      </button>
-	  <button id="button_inside4" (click)="admin_quest4(users.user_id)"
+              </button>
+		  </span>
+	   </p>
+	  <p>Results for questionnaire 
+	      <span>
+		      <button id="button_inside4" (click)="admin_quest4(users.user_id)"
               value="Submit"
               class="btn btn-primary">4th 
-      </button>
-	  <button id="button_inside5" (click)="admin_quest5(users.user_id)"
+              </button>
+		  </span>
+	   </p>
+	  <p>Results for questionnaire 
+	      <span>
+		      <button id="button_inside5" (click)="admin_quest5(users.user_id)"
               value="Submit"
               class="btn btn-primary">5th 
-      </button>
-	  <button id="button_inside6" (click)="admin_quest6(users.user_id)"
+              </button>
+		  </span>
+	   </p>
+	  <p>Results for questionnaire 
+	      <span>
+		      <button id="button_inside6" (click)="admin_quest6(users.user_id)"
               value="Submit"
               class="btn btn-primary">6th 
-      </button>
-	  <button (click)="how_many(users.user_id)"
-              value="Submit"
-              class="btn btn-primary">6th 
-      </button>
-	  <button (click)="how_many1()"
-              value="Submit"
-              class="btn btn-primary">6th 
-      </button></span>
-	  </h4>  	  
+              </button>
+		  </span> 
+	   </p>
+	    	  
 	  <hr>
 	</li>
   </div> 

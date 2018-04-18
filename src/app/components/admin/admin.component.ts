@@ -13,19 +13,17 @@ export class AdminComponent implements OnInit {
 
   form: FormGroup;
   uSER: Array<any>;
-  que1: Array<any>;
-  que2: Array<any>;
-  que3: Array<any>;
-  que4: Array<any>;
-  que5: Array<any>;
+  times1: Array<any>;
+  times2: Array<any>;
+  times3: Array<any>;
+  times4: Array<any>;
+  times5: Array<any>;
+  times6: Array<any>;
   que6: Array<any>;
-  show1:boolean = false;
-  show2:boolean = false;
-  show3:boolean = false;
-  show4:boolean = false;
-  show5:boolean = false;
-  show6:boolean = false;
+  messageClass;
+  message;
   id;
+  i;
   
   constructor(private authService: AuthService,
               private formBuilder: FormBuilder,
@@ -33,24 +31,6 @@ export class AdminComponent implements OnInit {
     
   }
 
-  show_div1(){
-	  return this.show1;
-  }
-  show_div2(){
-	  return this.show2;
-  }
-  show_div3(){
-	  return this.show3;
-  }
-  show_div4(){
-	  return this.show4;
-  }
-  show_div5(){
-	  return this.show5;
-  }
-  show_div6(){
-	  return this.show6;
-  }
   
   // Function to submit form
   onProfileGet() {
@@ -62,94 +42,143 @@ export class AdminComponent implements OnInit {
 
   // Function to submit form
   admin_quest1(id_2) {
-	  this.show1 = true;
-	  this.show2=false;
-	  this.show3=false;
-	  this.show4=false;
-	  this.show5=false;
-	  this.show6=false;
-    // Function from authentication service to
-    this.authService.admin_quest1(id_2).subscribe(response => {
-      this.que1 = response;
-    })
+	  this.authService.admin_quest1(id_2).subscribe(response => {
+		  if(response.length==0){
+		   this.messageClass = 'alert alert-info'; // Set a success class
+           this.message = "Questionnaire's result is empty"; // Set a success message
+		   setTimeout(() => {
+		   this.messageClass = ''; // Set a success class
+           this.message = ""; // Set a success message
+                    }, 3000);
+		  }else{
+	        this.authService.take_id_for_admin_quest(id_2,1);  
+	        this.router.navigate(['/admin_result']);
+          }
+        });
   }
 
   // Function to submit form
   admin_quest2(id_2) {
-	  this.show1=false;
-	  this.show2=true; 
-	  this.show3=false;
-	  this.show4=false; 
-	  this.show5=false;
-	  this.show6=false;
-    // Function from authentication service to
-    this.authService.admin_quest2(id_2).subscribe(response => {
-      this.que2 = response;
-    })
+	  this.authService.admin_quest2(id_2).subscribe(response => {
+		if(response.length==0){
+		   this.messageClass = 'alert alert-info'; // Set a success class
+           this.message = "Questionnaire's result is empty"; // Set a success message
+		  setTimeout(() => {
+		   this.messageClass = ''; // Set a success class
+           this.message = ""; // Set a success message
+                    }, 3000);
+		}else{
+	  this.authService.take_id_for_admin_quest(id_2,2);  
+	  this.router.navigate(['/admin_result']);
+  }
+        });
   }
 
   // Function to submit form
   admin_quest3(id_2) {
-	  this.show1=false;
-	  this.show2=false;
-	  this.show3=true;
-	  this.show4=false;
-	  this.show5=false; 
-	  this.show6=false;
-    // Function from authentication service to
-    this.authService.admin_quest3(id_2).subscribe(response => {
-      this.que3 = response;
-    })
+	  this.authService.admin_quest3(id_2).subscribe(response => {
+		  if(response.length==0){
+		   this.messageClass = 'alert alert-info'; // Set a success class
+           this.message = "Questionnaire's result is empty"; // Set a success message
+		  setTimeout(() => {
+		   this.messageClass = ''; // Set a success class
+           this.message = ""; // Set a success message
+                    }, 3000);
+		}else{
+	  this.authService.take_id_for_admin_quest(id_2,3);  
+	  this.router.navigate(['/admin_result']);
+  }
+        });
+		
   }
 
   // Function to submit form
   admin_quest4(id_2) {
-	  this.show1=false;
-	  this.show2=false;
-	  this.show3=false;
-	  this.show4=true;
-	  this.show5=false;
-	  this.show6=false;
-    // Function from authentication service to
-    this.authService.admin_quest4(id_2).subscribe(response => {
-      this.que4 = response;
-    })
+	  this.authService.admin_quest4(id_2).subscribe(response => {
+		  
+		if(response.length==0){
+		   this.messageClass = 'alert alert-info'; // Set a success class
+           this.message = "Questionnaire's result is empty"; // Set a success message
+		  setTimeout(() => {
+		   this.messageClass = ''; // Set a success class
+           this.message = ""; // Set a success message
+                    }, 3000);
+		}else{
+	  this.authService.take_id_for_admin_quest(id_2,4);  
+	  this.router.navigate(['/admin_result']);
+  }
+        });
   }
 
   // Function to submit form
   admin_quest5(id_2) {	  
-	  this.show1=false;
-	  this.show2=false;
-	  this.show3=false;
-	  this.show4=false;
-	  this.show5=true;
-	  this.show6=false;
-    // Function from authentication service to
-    this.authService.admin_quest5(id_2).subscribe(response => {
-      this.que5 = response;
-    })
+	  this.authService.admin_quest5(id_2).subscribe(response => {
+		  
+		if(response.length==0){
+		   this.messageClass = 'alert alert-info'; // Set a success class
+           this.message = "Questionnaire's result is empty"; // Set a success message
+		  setTimeout(() => {
+		   this.messageClass = ''; // Set a success class
+           this.message = ""; // Set a success message
+                    }, 3000);
+		}else{
+	  this.authService.take_id_for_admin_quest(id_2,5);  
+	  this.router.navigate(['/admin_result']);
+		}
+        });
   }
 
   // Function to submit form
   admin_quest6(id_2) {
-	  this.show1=false;
-	  this.show2=false;
-	  this.show3=false;
-	  this.show4=false;
-	  this.show5=false;
-	  this.show6=true;
-    // Function from authentication service to
-    this.authService.admin_quest6(id_2).subscribe(response => {
-      this.que6 = response;
-    })
+	  this.authService.admin_quest6(id_2).subscribe(response => {
+		  
+		if(response.length==0){
+		   this.messageClass = 'alert alert-info'; // Set a success class
+           this.message = "Questionnaire's result is empty"; // Set a success message
+		  setTimeout(() => {
+		   this.messageClass = ''; // Set a success class
+           this.message = ""; // Set a success message
+                    }, 3000);
+		}else{
+	       this.authService.take_id_for_admin_quest(id_2,6);  
+	       this.router.navigate(['/admin_result']);
+		}
+        });
   }
   
+ /* how_many1(){
+	  
+	  for(this.i=1;this.i<=this.uSER.length;this.i++){
+		  this.how_many(this.uSER[this.i].user_id);
+	  }
+	  console.log(this.times1[0].count);
+  }
   
+  how_many(id_2){
+	  this.authService.getAdminFirstQuest(id_2).subscribe(response => {
+      this.times1 = response;
+    });
+	this.authService.getAdminSecondQuest(id_2).subscribe(response => {
+      this.times2 = response;
+    });
+	this.authService.getAdminThreeQuest(id_2).subscribe(response => {
+      this.times3 = response;
+    });
+	this.authService.getAdminFourthQuest(id_2).subscribe(response => {
+      this.times4 = response;
+    });
+	this.authService.getAdminFifthQuest(id_2).subscribe(response => {
+      this.times5 = response;
+    });
+	this.authService.getAdminSixQuest(id_2).subscribe(response => {
+      this.times6 = response;
+    });
+        
+  }*/ 
   
   ngOnInit() {
 	this.onProfileGet();
     this.id = this.authService.sendId();
-	console.log(this.id);
 	if (this.id == null || this.id!=1){
 		this.router.navigate(['/home']);
 	}

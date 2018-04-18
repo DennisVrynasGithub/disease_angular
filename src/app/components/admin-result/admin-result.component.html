@@ -1,9 +1,9 @@
  <!-- Output of data -->
   <div class="uSERS">
-  <h3>The admin can access in every questionnaire's result</h3>
+  <h3>Results</h3>
     <div class="uSER">
       <li *ngFor="let users of que6">
-       <h4>The user with user id:<strong> {{users.id_2}}</strong> has score:<strong> {{users.Score}}</strong> in <strong> 6th </strong> questionnaire at<strong> {{users.Date | date : format : timezone}}</strong></h4>
+       <h4>The user has score:<strong> {{users.Score}}</strong> in <strong> {{number}}th </strong> questionnaire at<strong> {{users.Date | date : format : timezone}}</strong></h4>
       </li>
     </div>  
   </div>  
